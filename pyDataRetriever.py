@@ -9,6 +9,7 @@ def getYahooData(ticker, init_date, end_date, column_isolation=None, provider='y
     @ticker --> name of title
     @init_date --> [<year>,<month>,<day>]
     @end_date --> [<year>,<month>,<day>]
+    @column_isolation --> ['column a', 'column b'...]
     @provider --> default 'yahoo'
 
     Columns:
@@ -23,7 +24,7 @@ def getYahooData(ticker, init_date, end_date, column_isolation=None, provider='y
 
         df = web.DataReader(yahoo_ticker, provider, start_date, end_date)
 
-        # Extract only the column preferred
+        # Extract only the preferred column(s)
         if column_isolation is not None:
             df_export[column_isolation] = df[column_isolation]
         else:
