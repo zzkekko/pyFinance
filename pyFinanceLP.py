@@ -88,7 +88,7 @@ def efficientFrontier(tokens, init_date, end_date, resample=None, fillna=False, 
                 print('ret')
                 print(ret)
 
-            # Portofolio risks
+            # Portfolio risks
             risk = quad_form(x, C)
             if debug:
                 print('risk')
