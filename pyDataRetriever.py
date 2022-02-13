@@ -3,7 +3,6 @@ import pandas_datareader.data as web
 import datetime as dt
 
 
-
 def getYahooData(ticker, init_date, end_date, column_isolation=None, provider='yahoo'):
     """
     @ticker --> name of title
