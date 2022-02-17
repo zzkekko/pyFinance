@@ -4,7 +4,20 @@ import pyDataRetriever as dr
 from cvxpy import *
 
 
+
 def efficientFrontier(tokens, init_date, end_date, resample=None, fillna=False, dropnaPre=True, infvalue=0, min_return=[0.0001], debug=False):
+    """
+    Calculation of the efficient markowitz frontier, minimizing the risks
+    @ tokens: tickers/tokens list ['ticker1', 'ticker2'...]
+    @ init_date: initial date ['yyyy','m','d']
+    @ end_date: end date ['yyyy','m','d']
+    @ resample: dates resampler: ['W', 'M', 'SM', 'Q', 'A', 'WS', 'MS']
+    @ fillna: replace NaN with a personalized number
+    @ dropnaPre: clean NaN for each iteration
+    @ infvalue: replace np.inf, with a preferred number, otherwise, insert NaN value (activated only with returnsCalc = True)
+    @ min_return: list of trials [0.001, 0.002, 0.003...]
+    @ debug: bool
+    """
     try:
         # Import returns (dataframe data type)
         df = retrieveTokensValue(tokens=tokens, init_date=init_date, end_date=end_date, column='Adj Close', resample_value=resample, fillna=fillna, dropnaPre=dropnaPre, returnsCalc=True, dropnaRet=True, infvalue=infvalue)
